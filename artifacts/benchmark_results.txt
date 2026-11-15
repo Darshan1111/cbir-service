@@ -1,0 +1,14 @@
+raw-vs-centred 512-d overlap (centring effect alone): 0.718
+
+== Part 1: real data, N=1106, raw 512-d float32 = 2.27 MB ==
+dim  size_MB  saving  recall@5_vs_raw512  recall@5_vs_centred512
+ 32    0.14   93.8%  0.561              0.644
+ 64    0.28   87.5%  0.666              0.790
+128    0.57   75.0%  0.710              0.900
+256    1.13   50.0%  0.720              0.972
+
+== Part 2: synthetic latency scaling (dim 512 -> 128), 300 single-query searches ==
+N        numpy512_ms  faissFlat_ms  faissHNSW_ms  HNSW_recall@5_vs_flat
+10000         0.324        0.069        0.021  0.985
+100000        3.533        0.539        0.028  0.941
+500000       18.150        2.395        0.060  0.919
